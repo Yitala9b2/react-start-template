@@ -50,6 +50,8 @@ code {
         transform: rotate(360deg);
     }
 }
-
+.App-info{
+    padding: 0 50px;
+}
 
 /*# sourceMappingURL=main.css.map*/

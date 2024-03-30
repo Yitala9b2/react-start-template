@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import '../homeworks/ts1/1_base';
 import '../homeworks/ts1/3_write';
+import '../MyTests/test1';
 
 import { getFakeApi } from 'src/homeworks/ts1/2_repair';
 import './App.css';

@@ -24,10 +24,15 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "prettier"
     ],
     "rules": {
         "indent":["error", 4],
+        "no-unused-vars":"off",
+        "no-plusplus":"off",
+        "eol-last":"off",
+        "max-len":"off",
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/triple-slash-reference": "error",
         "react/jsx-uses-vars": "error",

@@ -1,0 +1,32 @@
+.operation{
+    
+    &.short{
+        min-height: 200px;
+        
+    }
+    min-height: 500px;
+    width: 300px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: white;
+    &__header{
+        align-items: center;
+        justify-content: space-between;
+        font-size: 2rem;
+        padding-bottom: 20px;
+        border-bottom: 0.5px solid rgba(128, 128, 128, 0.459);
+    }
+    &__info{
+        gap: 5px;
+        span{
+            font-size: 1rem;
+            color: grey;
+        }
+    }
+    &__amount{
+        font-weight: 700;
+    }
+    &__description{
+        padding-top: 20px;
+    }
+}

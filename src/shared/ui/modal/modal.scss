@@ -1,0 +1,32 @@
+.visible{
+    display: block;
+}
+.hidden{
+    display: none;
+}
+.modalBackground{
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    /* указываем z-индекс для корректного наслаивания */
+    z-index: 1;
+}
+.modal{
+    position: absolute;
+    width: 350px;
+    height: 495px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    top: calc(50% - 250px);
+    left: calc(50% - 175px);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    cursor: default;
+    padding: 40px 20px;
+}

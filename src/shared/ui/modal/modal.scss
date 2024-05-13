@@ -1,10 +1,7 @@
-.visible{
-    display: block;
-}
-.hidden{
-    display: none;
-}
+
+
 .modalBackground{
+    display: none;
     background: rgba(0, 0, 0, 0.8);
     position: fixed;
     top: 0;
@@ -14,6 +11,9 @@
     cursor: pointer;
     /* указываем z-индекс для корректного наслаивания */
     z-index: 1;
+    &.visible{
+        display: block;
+    }
 }
 .modal{
     position: absolute;

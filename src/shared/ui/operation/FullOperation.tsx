@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-
 import './operation.scss';
+
 
 interface FullOperation {
     amount: number;
-    categoryName?: string | null;
+    categoryName: string;
     name: string;
     description?: string | null;
     date: string;

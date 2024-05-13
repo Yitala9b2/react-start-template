@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
 import { Button } from '../../button/Button';
-
 import './modal.scss';
+
 
 interface ModalProps {
     visible: boolean;
@@ -14,7 +14,6 @@ export const Modal: FC<ModalProps> = ({ visible, children }) => {
         <div
             className={clsx('modalBackground', visible, {
                 visible: visible,
-                hidden: !visible,
             })}
         >
             <div className="modal">

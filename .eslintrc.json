@@ -38,8 +38,9 @@
         "react/jsx-uses-vars": "error",
         "react/jsx-uses-react": "error",
         "prettier/prettier": ["error",{
-            "endOfLine": "auto",
-            "tabWidth": 4
+            "endOfLine": "false",
+            "tabWidth": 4,
+            "semi": false
             }
           ]
     },

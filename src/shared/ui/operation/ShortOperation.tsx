@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-
 import './operation.scss';
+
 
 interface ShortOperation {
     amount: number;
-    categoryName?: string | null;
+    categoryName: string;
     name: string;
     shortDescription?: string | null;
 }

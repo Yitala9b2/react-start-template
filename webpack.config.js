@@ -82,7 +82,12 @@ module.exports = (_, args) => {
                                 },
                             },
                         },
-                        'sass-loader',
+                        {
+                            loader: 'sass-loader', // ИДЕТ ПЕРВЫМ ЛОАДЕРОМ
+                            options: {
+                                sourceMap: true,
+                            }
+                        }
                     ],
                     //include: /\.module\.scss$/,
                 },

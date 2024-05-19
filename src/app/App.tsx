@@ -1,17 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import Header from 'src/shared/ui/header/Header';
+import Main from './Main';
+import './styles/app.scss'
+import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 // eslint-disable-next-line import/no-unresolved
-import './App.css';
+
 
 function App() {
     return (
-        <div className="App">
-            <Header />
-            <div className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-            </div>
-        </div>
+        <ThemeProvider>
+            <LanguageProvider>
+                <Header />
+                <Main />
+            </LanguageProvider>
+        </ThemeProvider>
     );
 }
 

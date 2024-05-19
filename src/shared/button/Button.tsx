@@ -8,17 +8,15 @@ interface ButtonProps {
     backgroundColor?: string | null;
     size?: string;
     label: string;
+    onClick?: () => any;
 }
 /**
  * Primary UI component for user interaction
  */
 
-export const Button: FC<ButtonProps> = ({ primary, backgroundColor, size, label, ...props }) => {
+export const Button: FC<ButtonProps> = ({onClick, primary, backgroundColor, size, label, ...props }) => {
     const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
 
-    const onClick = () => {
-        sum(4, 5);
-    };
 
     return (
         <button

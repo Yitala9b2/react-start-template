@@ -1,4 +1,4 @@
-//import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 import Layout from './Layout';
 
@@ -11,4 +11,4 @@ const meta = {
 
 export default meta;
 // eslint-disable-next-line react/react-in-jsx-scope
-export const Default = () => <Layout />;
+export const Default: object = {};

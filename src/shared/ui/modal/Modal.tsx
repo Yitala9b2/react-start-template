@@ -7,9 +7,10 @@ import './modal.scss';
 interface ModalProps {
     visible: boolean;
     children?: string | null;
+    close:() => void;
 }
 // eslint-disable-next-line react/prop-types
-export const Modal: FC<ModalProps> = ({ visible, children }) => {
+export const Modal: FC<ModalProps> = ({close, visible, children }) => {
     return (
         <div
             className={clsx('modalBackground', visible, {
@@ -19,7 +20,7 @@ export const Modal: FC<ModalProps> = ({ visible, children }) => {
             <div className="modal">
                 <div>{children}</div>
                 <div>
-                    <Button primary size={'medium'} label={'закрыть'}></Button>
+                    <Button onClick={close} primary size={'medium'} label={'закрыть'}></Button>
                 </div>
             </div>
         </div>

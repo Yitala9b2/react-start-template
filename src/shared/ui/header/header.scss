@@ -1,12 +1,22 @@
+@import '../../../constants.scss';
+
 .header {
   position: fixed;
   height: 80px;
   z-index: 100;
   width: 100%;
-  background-color: rgb(100, 150, 190);
+//  background-color: rgb(100, 150, 190);
   padding: 10px;
   top: 0;
   left: 0;
+  &.light{
+    background-color: $header-bg-color;
+    color: $header-text-color;
+  }
+  &.dark{
+    background-color: $headerDark-bg-color;
+    color: $headerDark-text-color;
+  }
 
   &__container{
     width: 100%;

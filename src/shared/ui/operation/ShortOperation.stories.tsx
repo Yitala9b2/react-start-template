@@ -13,6 +13,7 @@ export default meta;
 type Story = StoryObj<typeof ShortOperation>;
 export const Default: Story = {
     args: {
+        id: 1,
         amount: 100,
         categoryName: 'категория',
         name: 'название',

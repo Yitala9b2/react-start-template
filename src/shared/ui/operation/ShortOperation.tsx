@@ -4,7 +4,7 @@ import { ShortOperationTypes } from './operationsTypes';
 
 
 // eslint-disable-next-line react/prop-types
-export const ShortOperation: FC<ShortOperationTypes> = ({ amount, categoryName, name, shortDescription }) => {
+export const ShortOperation: FC<ShortOperationTypes> = ({ amount, categoryName, name, shortDescription, id }) => {
     return (
         <div className="operation dfc short">
             <div className="operation__header df">

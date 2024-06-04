@@ -13,10 +13,27 @@ export default meta;
 type Story = StoryObj<typeof FullOperation>;
 export const Default: Story = {
     args: {
-        amount: 100,
-        categoryName: 'категория',
-        name: 'название',
-        description: 'полное описание',
-        date: new Date().toISOString().slice(0, 10),
-    },
+        value: {
+            id: "1",
+            amount: 100,
+            category: {
+                id: 'vegetables', name: 'овощи'
+            },
+            name: 'имя',
+            description: 'полное описание',
+            date: new Date().toISOString().slice(0, 10),
+            type: 'Cost',
+        },
+    }
+    //args: {
+        
+    //        id: 1,
+    //        amount: 100,
+    //        categoryName: 'категория',
+    //        name: 'имя',
+    //        description: 'полное описание',
+    //        date: new Date().toISOString().slice(0, 10),
+    //}
 };
+
+

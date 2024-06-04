@@ -25,11 +25,11 @@ import dayjs from 'dayjs';
 //};
 
 
-interface irt {
+interface IPropsFullOperationTypes {
     value : FullOperationTypes
 }
 // eslint-disable-next-line react/prop-types
-export const FullOperation: FC<irt> = ({...props}) => {
+export const FullOperation: FC<IPropsFullOperationTypes> = ({...props}) => {
     return (
         <div className="operation dfc">
             <div className="operation__header df">

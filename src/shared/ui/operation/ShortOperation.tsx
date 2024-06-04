@@ -1,15 +1,10 @@
 import React, { FC } from 'react';
 import './operation.scss';
+import { ShortOperationTypes } from './operationsTypes';
 
 
-interface ShortOperation {
-    amount: number;
-    categoryName: string;
-    name: string;
-    shortDescription?: string | null;
-}
 // eslint-disable-next-line react/prop-types
-export const ShortOperation: FC<ShortOperation> = ({ amount, categoryName, name, shortDescription }) => {
+export const ShortOperation: FC<ShortOperationTypes> = ({ amount, categoryName, name, shortDescription }) => {
     return (
         <div className="operation dfc short">
             <div className="operation__header df">

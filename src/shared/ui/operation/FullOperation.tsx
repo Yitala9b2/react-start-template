@@ -1,16 +1,10 @@
 import React, { FC } from 'react';
 import './operation.scss';
+import { FullOperationTypes } from './operationsTypes';
 
 
-interface FullOperation {
-    amount: number;
-    categoryName: string;
-    name: string;
-    description?: string | null;
-    date: string;
-}
 // eslint-disable-next-line react/prop-types
-export const FullOperation: FC<FullOperation> = ({ amount, categoryName, name, description, date }) => {
+export const FullOperation: FC<FullOperationTypes> = ({ amount, categoryName, name, description, date }) => {
     return (
         <div className="operation dfc">
             <div className="operation__header df">

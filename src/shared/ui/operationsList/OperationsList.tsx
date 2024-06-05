@@ -4,7 +4,7 @@ import { FullOperation } from '../operation/FullOperation';
 import { FullOperationTypes } from '../operation/operationsTypes';
 import data from './operationsData.json'
 import { useInView } from "react-intersection-observer";
-import { createRandomOperation } from 'src/homeworks/ts1/3_write';
+import { createRandomOperation } from '../../../homeworks/ts1/3_write';
 import { Category } from '../operation/operationsTypes';
 import { useScrollToFetchData } from 'src/hooks/observerHook';
 import { Button } from '../../button/Button';

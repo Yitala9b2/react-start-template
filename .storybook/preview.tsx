@@ -22,6 +22,7 @@ const preview: Preview = {
                 < ThemeProvider >
                     <LanguageProvider>
                         < Story />
+                        
                     </LanguageProvider>
                 </ThemeProvider>
             </>

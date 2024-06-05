@@ -10,11 +10,9 @@ import { ModalProps } from './ModalTypes';
 export const Modal: FC<ModalProps> = ({ close, visible, children }) => {
     return (
         <>
-            {createPortal(
-                <div
-                    className={clsx('modalBackground', visible, {
-                        visible: visible,
-                    })}
+        {visible && createPortal(
+                <div 
+                    className='modalBackground'
                 >
                     <div className="modal">
                         <div>{children}</div>
@@ -22,7 +20,9 @@ export const Modal: FC<ModalProps> = ({ close, visible, children }) => {
                             <Button onClick={close} primary size={'medium'} label={'закрыть'}></Button>
                         </div>
                     </div>
-                </div>, document.body)}
+                </div>
+                
+                , document.body)}
         </>
     );
 };

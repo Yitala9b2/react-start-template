@@ -98,4 +98,3 @@ export const createRandomOperation = (createdAt: string): Operation => {
     };
 };
 
-console.log(createRandomOperation(new Date('YYYY-MM-DD').toString()));

@@ -16,7 +16,6 @@ export const OperationsList = memo(() => {
     const [operations, setOperations] = useState<FullOperationTypes[] | null>(
         data
     )
-    console.log(operations)
     //const [visible, setVisible] = useState(false);
 
     //const ref = useRef<HTMLDivElement | null>(null);

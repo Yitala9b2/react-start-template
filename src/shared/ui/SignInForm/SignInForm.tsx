@@ -15,6 +15,8 @@ interface IInput {
     personPassword: string,
 };
 
+const pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
 export const SignInForm: FC = () => {
     const [data, setData] = useState({
         personName: '',
@@ -45,10 +47,10 @@ export const SignInForm: FC = () => {
                     readOnly={false}
                     name="personName"
                     control={control}
-                    label="Введите имя"
+                    label="Введите email"
                     id="input-name"
                     pattern={{
-                        value: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        value: pattern,
                         message: "Invalid email address"
                     }
                     }

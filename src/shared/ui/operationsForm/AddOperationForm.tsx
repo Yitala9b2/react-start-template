@@ -4,6 +4,7 @@ import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { CustomTextField } from '../../customFormComponents/CustomTextField';
 import { CustomAutocomplete } from '../../customFormComponents/CustomAutocomplete';
 import { CustomNumericTextField } from '../../customFormComponents/CustomNumericTextField';
+import { CategoryType } from './FormTypes';
 
 const CATEGORIES = [
     { id: 'vegetables', name: 'овощи' },
@@ -13,17 +14,13 @@ const TYPES = [
     'Затраты', 'Прибыль'
 ]
 
-export type Category = {
-    id: string;
-    name: string;
-    photo?: string;
-};
+
 interface IOperation {
     name: string;
     description?: string;
     date: Date;
     amount: number | null;
-    category: Category;
+    category: CategoryType;
 }
 interface ICost extends IOperation {
     type: 'Затраты';
@@ -68,13 +65,13 @@ export const AddOperationForm: FC = () => {
             disableClearable={true}
                     className='wAll'
                     readOnly={false}
-                    val={(value) => value ? value : null}
+                    val={(value) => value ? value : ""}
                     //readOnly={onlyToRead || data.id !== null}
                     defaultValue={data.type}
                     id="input-type"
                     name='type'
                     control={control}
-                    getOptionLabel={(option) => option || ""}
+                    getOptionLabel={(option) =>  option || ""}
                     options={TYPES}
                     // eslint-disable-next-line react-hooks/rules-of-hooks
                     isOptionEqualToValue={(option, value) => (option === value)}

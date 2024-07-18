@@ -4,28 +4,31 @@ import TextField from "@mui/material/TextField";
 import React, { FC } from 'react';
 import { AutocompleteProps } from "@mui/material";
 
+type Option = {
+    id: string;
+    name: string;
+}
 
-
-interface IFormAutoComplete {
+interface IFormAutoComplete<O extends Option | string> {
     className?: string,
     id: string,
     name: string,
     control: any,
     label: string,
     disabled?: boolean,
-    val: (value:any) => void,
-    rules?: any,
-    options: {}[],
+    val: (value:O) => O,
+    rules?: Object,
+    options: O[],
     requiredInput?: boolean,
-    defaultValue: any,
-    isOptionEqualToValue: (option: any, value: any) => boolean,
+    defaultValue: O,
+    isOptionEqualToValue: (option: O, value: O) => boolean,
     readOnly: boolean,
-    getOptionLabel: (option: any) => string,
+    getOptionLabel: (option: O) => string,
     disableClearable?: boolean
 }
 
 
-export const CustomAutocomplete: FC<IFormAutoComplete> = ({
+export const CustomAutocomplete = <O extends Option | string> ({
     defaultValue,
     className,
     id,
@@ -37,7 +40,7 @@ export const CustomAutocomplete: FC<IFormAutoComplete> = ({
     rules,
     isOptionEqualToValue,
     label,
-    readOnly, disableClearable }) => {
+    readOnly, disableClearable }: IFormAutoComplete<O>) => {
 
 
     return (

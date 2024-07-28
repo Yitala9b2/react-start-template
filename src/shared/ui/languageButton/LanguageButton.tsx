@@ -1,5 +1,5 @@
 import React, { useContext, FC } from 'react';
-import { Button } from '../../../shared/button/Button';
+import { Button } from '@mui/material';
 import { resource } from '../../../app/localization/resources';
 import { LanguageContext } from '../../../app/context/LanguageContext';
 
@@ -15,11 +15,7 @@ const LanguageButton: FC<IlanguageButton> = ({text}) => {
     };
     return (
         <>
-            <Button
-                primary size={'medium'} label={'сменить язык'}
-                onClick={toggleLanguage}
-            />
-            {text ? <div>{resource[language].components.testLanguage.text} </div> : null}
+        <Button onClick={toggleLanguage} variant="contained">{resource[language].components.testLanguage.text}</Button>
         </>
     );
 };

@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer";
 import { createRandomOperation } from '../../../homeworks/ts1/3_write';
 import { Category } from '../operation/operationsTypes';
 import { useScrollToFetchData } from 'src/hooks/observerHook';
-import { Button } from '../../button/Button';
+import { Button } from '@mui/material';
 
 
 
@@ -73,7 +73,7 @@ export const OperationsList = memo(() => {
         <div className='operationsList'>
             {renderItems()}
         </div>
-        <Button onClick={addOperationHandler}  primary size={'medium'} label={'Показать еще'}/>
+        <Button onClick={addOperationHandler} variant='contained' >Показать еще</Button>
         </>
         
     );

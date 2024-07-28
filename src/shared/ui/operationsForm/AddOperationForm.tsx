@@ -5,6 +5,8 @@ import { CustomTextField } from '../../customFormComponents/CustomTextField';
 import { CustomAutocomplete } from '../../customFormComponents/CustomAutocomplete';
 import { CustomNumericTextField } from '../../customFormComponents/CustomNumericTextField';
 import { CategoryType } from './FormTypes';
+import { useNavigate } from 'react-router-dom';
+import'./addOperation.scss'
 
 const CATEGORIES = [
     { id: 'vegetables', name: 'овощи' },
@@ -34,6 +36,7 @@ export type Operation = ICost | IProfit;
 
 
 export const AddOperationForm: FC = () => {
+    const navigate = useNavigate();
     const [data, setData] = useState<Operation>({
         type: "Прибыль",
         name: "",
@@ -55,12 +58,15 @@ export const AddOperationForm: FC = () => {
     const onSubmit: SubmitHandler<Operation> = (data) => {
         setValue('date', new Date());
         console.log(data)
+        navigate(-1);
     }
+
+
 
 
     return (
         <FormProvider {...methods}>
-            <Box className='form' component="form" onSubmit={handleSubmit(onSubmit)}>
+            <Box className='form addOperationForm' component="form" onSubmit={handleSubmit(onSubmit)}>
             <CustomAutocomplete
             disableClearable={true}
                     className='wAll'

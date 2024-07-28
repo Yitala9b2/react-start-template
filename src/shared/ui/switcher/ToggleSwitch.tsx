@@ -6,7 +6,7 @@ import { ThemeContext } from '../../../app/context/ThemeContext';
 import './toggleSwitch.scss'
 
 const ToggleSwitch = () => {
-    const {language} = useContext(LanguageContext)
+    const { language } = useContext(LanguageContext)
     const { theme, setTheme } = useContext(ThemeContext)
     const [isToggled, setIsToggled] = useState(false);
 
@@ -18,12 +18,12 @@ const ToggleSwitch = () => {
 
     return (
         <div className="switcher">
-        <label className="toggle-switch">
-            {/*<span className='toggle-label'>сменить тему</span>*/}
-            <input id="changeTheme" type="checkbox" checked={isToggled} onChange={onToggle} />
-            <span className="switch" />
-        </label>
-        <label  htmlFor="changeTheme">{resource[language].components.header.theme}</label>
+            <label htmlFor="changeTheme">{resource[language].components.header.theme}</label>
+            <label className="toggle-switch">
+                {/*<span className='toggle-label'>сменить тему</span>*/}
+                <input id="changeTheme" type="checkbox" checked={isToggled} onChange={onToggle} />
+                <span className="switch" />
+            </label>
         </div>
     );
 };

@@ -24,7 +24,8 @@ const ModalAction = memo(() => {
             <input value={inputData} onChange={(e) => changeHandler(e)} type="text" />
         </div>
         <Button onClick={()=>openModalHandler()} primary size={'medium'} label={'открыть модальное окно'}></Button>
-        <Modal close={closeModalHandler} visible={visible}>{inputData}</Modal>
+        {/*<Modal close={closeModalHandler} visible={visible}>{inputData}</Modal>*/}
+        
         </>
     );
 });

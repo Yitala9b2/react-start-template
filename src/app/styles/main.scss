@@ -20,26 +20,7 @@
   }
 }
 
-.App-body {
-    padding-top: 100px;
-    padding: 100px 4rem 0;
-//  min-height: calc(100vh) ;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  &.light{
-    background-color: $main-bg-color;
-  }
-  &.dark{
-    background-color: $mainDark-bg-color;
-  }
-  &.openModal{
-    overflow: hidden;
-  }
-}
+
 
 .App-link {
   color: #61dafb;

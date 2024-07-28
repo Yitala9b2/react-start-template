@@ -1,5 +1,6 @@
+import { ReactNode } from "react";
 export interface ModalProps {
     visible: boolean;
-    children?: string | null;
+    children?: string | ReactNode | null;
     close:() => void;
 }

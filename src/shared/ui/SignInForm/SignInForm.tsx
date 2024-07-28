@@ -38,7 +38,7 @@ export const SignInForm: FC = () => {
     };
     return (
         <FormProvider {...methods}>
-            <Box className='form' component="form" onSubmit={handleSubmit(onSubmit)}>
+            <Box className='form signInForm' component="form" onSubmit={handleSubmit(onSubmit)}>
                 {/*<Box className='wAll'>*/}
                 <>
                 <CustomTextField

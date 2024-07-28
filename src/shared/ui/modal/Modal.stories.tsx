@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof Modal>;
 export const Default: Story = {
     args: {
-        visible: true,
+        //visible: true,
         children: 'Модалка',
     },
 };

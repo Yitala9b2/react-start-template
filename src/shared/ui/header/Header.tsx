@@ -1,30 +1,37 @@
-import React, { useContext} from 'react';
+import React, { useContext } from 'react';
 import { resource } from '../../../app/localization/resources';
 import { ThemeContext } from '../../../app/context/ThemeContext';
 import { LanguageContext } from '../../../app/context/LanguageContext';
 import Logo from '../logo/Logo';
 import ToggleSwitch from '../switcher/ToggleSwitch';
-//import { Button } from '../../../shared/button/Button';
-import { useTranslation } from 'react-i18next'
+import { Box } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 import LanguageButton from '../languageButton/LanguageButton';
 import './header.scss';
 
 
 const Header = () => {
     //const { t, i18n } = useTranslation()
-    const {theme} = useContext(ThemeContext)
-    const {language} = useContext(LanguageContext)
+    const { theme } = useContext(ThemeContext)
+    const { language } = useContext(LanguageContext)
 
 
 
     return (
         <header className={'header ' + theme}>
-            <div className="header__container">
+            <Box className="header__container">
                 <Logo />
-                <h1>{resource[language].components.header.head}</h1>
-                <ToggleSwitch/>
-                <LanguageButton text={false}/>
-            </div>
+                <nav className="header__list df">
+                    <NavLink to="/login" className={(props)=> props.isActive ? "header__li active" : "header__li"}  >{resource[language].components.header.login}</NavLink>
+                    <NavLink to="/operations" className={(props)=> props.isActive ? "header__li active" : "header__li"}  >{resource[language].components.header.operations}</NavLink>
+                </nav>
+                {/*<h1>{resource[language].components.header.login}</h1>*/}
+                <Box className='header__actions df'>
+                    <ToggleSwitch />
+                    <LanguageButton text={false} />
+                </Box>
+
+            </Box>
         </header>
     );
 };

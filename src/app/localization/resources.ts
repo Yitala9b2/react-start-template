@@ -8,6 +8,7 @@ export const resource: I18nContextType['i18n'] = {
                 login: 'Login form',
                 language: 'Сhange language',
                 operations: 'Operations',
+                profile: 'Profile'
             },
             operation:{
                 addOperation: 'Add operation'
@@ -24,6 +25,7 @@ export const resource: I18nContextType['i18n'] = {
                 login: 'Форма входа',
                 language: 'Сменить язык',
                 operations: 'Операции',
+                profile: 'Профиль'
             },
             operation:{
                 addOperation: 'Добавить операцию'

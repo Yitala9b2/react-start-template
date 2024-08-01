@@ -31,7 +31,6 @@ export const Modal: FC<ModalProps> = ({ children }) => {
                         <Box className='df fc'>
                             <Typography sx={{ pr: 2 }} variant="h6" component="h2"> добавить операцию</Typography>
                         </Box>
-
                         <IconButton onClick={close}><CloseIcon /></IconButton>
                     </Box>
                         <Box className='modal__content'>{children}</Box>

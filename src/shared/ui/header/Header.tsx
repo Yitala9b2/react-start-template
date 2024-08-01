@@ -11,7 +11,6 @@ import './header.scss';
 
 
 const Header = () => {
-    //const { t, i18n } = useTranslation()
     const { theme } = useContext(ThemeContext)
     const { language } = useContext(LanguageContext)
 
@@ -24,8 +23,8 @@ const Header = () => {
                 <nav className="header__list df">
                     <NavLink to="/login" className={(props)=> props.isActive ? "header__li active" : "header__li"}  >{resource[language].components.header.login}</NavLink>
                     <NavLink to="/operations" className={(props)=> props.isActive ? "header__li active" : "header__li"}  >{resource[language].components.header.operations}</NavLink>
+                    <NavLink to="/profile" className={(props)=> props.isActive ? "header__li active" : "header__li"}  >{resource[language].components.header.profile}</NavLink>
                 </nav>
-                {/*<h1>{resource[language].components.header.login}</h1>*/}
                 <Box className='header__actions df'>
                     <ToggleSwitch />
                     <LanguageButton text={false} />

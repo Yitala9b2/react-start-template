@@ -100,12 +100,18 @@ code {
     margin-top:  80px;
     padding: 0px 4rem 0;
 //  min-height: calc(100vh) ;
-  color: white;
   height: calc(100vh - 80px) ;
   &.light{
     background-color: $main-bg-color;
+    color: black;
   }
   &.dark{
     background-color: $mainDark-bg-color;
+    color: white;
   }
+}
+.link{
+    display: block;
+    height: 100%;
+    width: 100%;
 }

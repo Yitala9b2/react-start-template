@@ -62,7 +62,6 @@ export const createRandomProduct = (createdAt: string): Product => {
     const uniqueVal = randomNumber(4);
     const productId = randomNumber(1000)
     //const productId = randomNumber(1000)
-    console.log(uniqueVal)
     return {
         id: productId,
         photo: `img/smth/${uniqueVal}`,

@@ -1,18 +1,27 @@
-export type Category = {
+export type CategoryType = {
     id: string;
     name: string;
     photo?: string;
 };
 
-export interface FullOperationTypes {
-    id: string,
-    amount: number;
-    category: Category;
-    date: string;
-    description?: string | null;
+interface IOperation {
+    id: string;
     name: string;
-    type: string;
+    description?: string;
+    date: Date;
+    amount: number | null;
+    category: CategoryType;
 }
+interface ICost extends IOperation {
+    type: 'Затраты';
+}
+interface IProfit extends IOperation {
+    type: 'Прибыль';
+}
+
+export type Operation = ICost | IProfit;
+
+
 
 export interface ShortOperationTypes {
     id:number

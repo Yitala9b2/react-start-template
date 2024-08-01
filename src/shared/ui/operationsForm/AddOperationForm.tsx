@@ -6,6 +6,9 @@ import { CustomAutocomplete } from '../../customFormComponents/CustomAutocomplet
 import { CustomNumericTextField } from '../../customFormComponents/CustomNumericTextField';
 import { CategoryType } from './FormTypes';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addOperation } from 'src/slices/operationsSlice';
+import { Operation } from '../operation/operationsTypes';
 import'./addOperation.scss'
 
 const CATEGORIES = [
@@ -17,27 +20,14 @@ const TYPES = [
 ]
 
 
-interface IOperation {
-    name: string;
-    description?: string;
-    date: Date;
-    amount: number | null;
-    category: CategoryType;
-}
-interface ICost extends IOperation {
-    type: 'Затраты';
-}
-interface IProfit extends IOperation {
-    type: 'Прибыль';
-}
 
-
-export type Operation = ICost | IProfit;
 
 
 export const AddOperationForm: FC = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [data, setData] = useState<Operation>({
+        id:"",
         type: "Прибыль",
         name: "",
         description: "",
@@ -48,6 +38,7 @@ export const AddOperationForm: FC = () => {
             name: 'овощи',
         },
     })
+    const randomNumber = (val: number): string => Math.floor(Math.random() * (val - 0) + 0).toString();
     const methods = useForm<Operation>({
         defaultValues: data
     })
@@ -57,7 +48,7 @@ export const AddOperationForm: FC = () => {
 
     const onSubmit: SubmitHandler<Operation> = (data) => {
         setValue('date', new Date());
-        console.log(data)
+        dispatch(addOperation({...data, id: randomNumber(100000)}))
         navigate(-1);
     }
 
@@ -72,14 +63,12 @@ export const AddOperationForm: FC = () => {
                     className='wAll'
                     readOnly={false}
                     val={(value) => value ? value : ""}
-                    //readOnly={onlyToRead || data.id !== null}
                     defaultValue={data.type}
                     id="input-type"
                     name='type'
                     control={control}
                     getOptionLabel={(option) =>  option || ""}
                     options={TYPES}
-                    // eslint-disable-next-line react-hooks/rules-of-hooks
                     isOptionEqualToValue={(option, value) => (option === value)}
                     label='Тип операции'
                     />
@@ -105,14 +94,12 @@ export const AddOperationForm: FC = () => {
                     className='wAll'
                     readOnly={false}
                     val={(value) => value?.name ? value : null}
-                    //readOnly={onlyToRead || data.id !== null}
                     defaultValue={data.category}
                     id="input-category"
                     name='category'
                     control={control}
                     getOptionLabel={(option) => option.name || ""}
                     options={CATEGORIES}
-                    // eslint-disable-next-line react-hooks/rules-of-hooks
                     isOptionEqualToValue={(option, value) => (option.id === value.id)}
                     label='Категория'
                     />

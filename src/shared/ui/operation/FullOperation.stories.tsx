@@ -21,19 +21,10 @@ export const Default: Story = {
             },
             name: 'имя',
             description: 'полное описание',
-            date: new Date().toISOString().slice(0, 10),
-            type: 'Cost',
+            date: new Date(),
+            type: 'Прибыль',
         },
     }
-    //args: {
-        
-    //        id: 1,
-    //        amount: 100,
-    //        categoryName: 'категория',
-    //        name: 'имя',
-    //        description: 'полное описание',
-    //        date: new Date().toISOString().slice(0, 10),
-    //}
 };
 
 

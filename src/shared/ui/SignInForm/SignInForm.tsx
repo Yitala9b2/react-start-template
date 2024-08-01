@@ -7,21 +7,26 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
+import { useDispatch } from 'react-redux';
+import { setToken, setUser } from 'src/slices/mainSlice';
+import {  useNavigate } from 'react-router-dom';
 import './signIn.scss'
 
 
 interface IInput {
-    personName: string,
-    personPassword: string,
+    email: string,
+    password: string,
 };
 
 const pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 export const SignInForm: FC = () => {
+    const navigate = useNavigate();
     const [data, setData] = useState({
-        personName: '',
-        personPassword: ''
+        email: '',
+        password: ''
     })
+    const dispatch = useDispatch();
     const methods = useForm<IInput>({
         defaultValues: data
     })
@@ -30,8 +35,13 @@ export const SignInForm: FC = () => {
     const { handleSubmit, formState: { errors }, control } = methods
 
 
-    const onSubmit: SubmitHandler<IInput> = data => console.log(data);
-
+    const onSubmit: SubmitHandler<IInput> = data => {
+        localStorage.setItem("myToken", 'some token')
+        localStorage.setItem("user", JSON.stringify(data))
+        dispatch(setToken('token'))
+        dispatch(setUser(data))
+        navigate(-1);
+    };
 
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
@@ -39,13 +49,12 @@ export const SignInForm: FC = () => {
     return (
         <FormProvider {...methods}>
             <Box className='form signInForm' component="form" onSubmit={handleSubmit(onSubmit)}>
-                {/*<Box className='wAll'>*/}
                 <>
                 <CustomTextField
                      className='wAll'
                     requiredInput
                     readOnly={false}
-                    name="personName"
+                    name="email"
                     control={control}
                     label="Введите email"
                     id="input-name"
@@ -54,28 +63,26 @@ export const SignInForm: FC = () => {
                         message: "Invalid email address"
                     }
                     }
-                    //register={register}
                     startAdornment={
                         <InputAdornment position="start">
                             <PersonIcon />
                         </InputAdornment>
                     }
                 />
-                {errors?.personName?.type === "pattern" && <div className='error'>Введен некорректный email</div>}
+                {errors?.email?.type === "pattern" && <div className='error'>Введен некорректный email</div>}
                 </>
-                {/*</Box>*/}
 
-                {/*<Box className='wAll'>*/}
+
+
                 <CustomTextField
                      className='wAll'
                     type={showPassword ? 'text' : 'password'}
                     requiredInput
                     readOnly={false}
-                    name="personPassword"
+                    name="password"
                     control={control}
                     label="Введите пароль"
                     id="input-password"
-                    //register={register}
                     endAdornment={
                         <InputAdornment position="end">
                             <IconButton
@@ -97,7 +104,6 @@ export const SignInForm: FC = () => {
                 
                 <Button variant="contained" type="submit"> Отправить</Button>
                 </Box>
-            {/*</Box>*/}
         </FormProvider>
     );
 };

@@ -1,7 +1,7 @@
 {
   "name": "react-start-template",
   "version": "1.0.0",
-  "homepage": "https://yitala9b2.github.io/react-start-template",
+  "homepage": "https://yitala9b2.github.io/react-start-template/",
   "description": "Start repo with required configuration",
   "main": "src/index.tsx",
   "author": "Igor <spirit-drive@yandex.ru>",

@@ -16,7 +16,7 @@ const Layout = (props:any) => {
     useEffect(() => {
         if (token) {
             dispatch(setToken(token))
-            dispatch(setUser(user))
+            dispatch(setUser(JSON.parse(user)))
         }
         dispatch(setInitial(true))
         navigate("/login");

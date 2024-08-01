@@ -40,7 +40,7 @@ export const SignInForm: FC = () => {
         localStorage.setItem("user", JSON.stringify(data))
         dispatch(setToken('token'))
         dispatch(setUser(data))
-        navigate(-1);
+        navigate("/profile");
     };
 
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {

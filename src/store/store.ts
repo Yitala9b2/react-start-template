@@ -7,8 +7,8 @@ export const store = configureStore({
         main: mainSlice,
         operations: operationsSlice,
     },
-    //devTools: process.env.NODE_ENV !== 'production',  // включаем только при разработке
-    devTools: true, // всегда включен
+    devTools: process.env.NODE_ENV !== 'production',  // включаем только при разработке
+    //devTools: true, // всегда включен
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
           serializableCheck: false,

@@ -11,7 +11,7 @@ export const fetchUser = createAsyncThunk(
     'main/fetchUser',
     async (body: IInput, { dispatch, rejectWithValue, fulfillWithValue }) => {
         try {
-            const response = await fetch(`http://19429ba06ff2.vps.myjino.ru/api/signup`, {
+            const response = await fetch(`https://19429ba06ff2.vps.myjino.ru/api/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'

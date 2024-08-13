@@ -28,7 +28,7 @@ export default function useHttp() {
                 contentType = 'application/json',
             ) => {
                 try {
-                    const response = await fetch(`http://19429ba06ff2.vps.myjino.ru/api/${url}`, {
+                    const response = await fetch(`https://19429ba06ff2.vps.myjino.ru/api/${url}`, {
                         method,
                         body,
                         headers: checkToken(contentType),

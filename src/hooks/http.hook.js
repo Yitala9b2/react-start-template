@@ -1,68 +1,57 @@
 import { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { setSnackBar } from 'src/slices/snackBarSlice';
 //import'../components/vacancyForm/userData.json'
 // перенесли повторяющиеся в отдельный хук, чтобы потом его переиспользовать в разных местах (loading, error, связь с сервером, очистка ошибки если персонажа нет)
 
 export default function useHttp() {
-    const [loading, setLoading] = useState(false);
+    const token = localStorage.getItem('myToken')
     const dispatch = useDispatch();
+    const checkToken = (contentType) => {
+        if (token) {
+            return {
+                "Content-type": contentType,
+                Authorization: `Bearer ${token}`,
+            }
+        } else{
+            return {
+            "Content-type": contentType,
+        }
+        }
+    }
     const request =
         useCallback(
             async (
                 url,
                 method = 'GET',
                 body = null,
-                mode = 'cors',
-                credentials = 'include',
                 contentType = 'application/json',
             ) => {
-                setLoading(true);
                 try {
-                    const response = await fetch(url, {
+                    const response = await fetch(`http://19429ba06ff2.vps.myjino.ru/api/${url}`, {
                         method,
                         body,
-                        mode,
-                        credentials,
-                        headers: {
-                            "Content-type": contentType,
-                        }
+                        headers: checkToken(contentType),
                     });
                     if (!response.ok) {
-                        throw new Error(
-                            `Could not fetch ${url}, status: ${response.status}`,
-                        );
-                    }
-
-                    // eslint-disable-next-line no-redeclare
-                    var contentType = response.headers.get('content-type')
-                    if (contentType && contentType.indexOf('application/json') !== -1) {
-                        const data = await response.json();
-                        return data;
-                    }
-                    if (contentType && contentType.indexOf('text/plain') !== -1){
-                        const data = await response.text()
-                        return data;
-                    }
-                    
-                    else {
-                        return ({})
-                    }
-
-                    //console.log(typeof response)
-                    //const data = await response.json();
-                    //setLoading(false);
-
-                    //return data;
-
-
-
-
+                        const errors = await response.json();
+                        throw new Error(`${errors.errors[0].message}`);
+                    } 
+                    const data = await response.json();
+                    return data;
 
                 } catch (e) {
+                    console.log(e.message)
+                    dispatch(setSnackBar({
+                        open: true,
+                        text: e.message,
+                        severity: 'error'
+                    }));
                     throw e;
                 }
             }, []);
 
 
 
-    return { loading, request };
+    return { request };
 }

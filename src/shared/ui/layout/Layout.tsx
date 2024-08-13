@@ -5,18 +5,26 @@ import { useDispatch } from 'react-redux';
 import { setInitial, setUser, setToken } from 'src/slices/mainSlice';
 import { useNavigate } from "react-router-dom";
 import './layout.scss';
+import useHttp from 'src/hooks/http.hook';
 
 
 
-const Layout = (props:any) => {
+const Layout = () => {
     const navigate = useNavigate();
     const token = localStorage.getItem("myToken")
-    const user = localStorage.getItem("user")
     const dispatch = useDispatch()
+    const { request } = useHttp()
+    const getProfile = async () => {
+        const res = await request(`profile`);
+        return res;
+    }
     useEffect(() => {
         if (token) {
             dispatch(setToken(token))
-            dispatch(setUser(JSON.parse(user)))
+            getProfile().then((value) => {
+                dispatch(setUser(value))
+            })
+            
         }
         dispatch(setInitial(true))
         navigate("/login");

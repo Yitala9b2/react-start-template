@@ -6,6 +6,7 @@ export const resource: I18nContextType['i18n'] = {
             header: {
                 theme: 'Сhange theme',
                 login: 'Login form',
+                registration: 'Registration',
                 language: 'Сhange language',
                 operations: 'Operations',
                 profile: 'Profile'
@@ -23,6 +24,7 @@ export const resource: I18nContextType['i18n'] = {
             header: {
                 theme: 'Сменить тему',
                 login: 'Форма входа',
+                registration: 'Регистрация',
                 language: 'Сменить язык',
                 operations: 'Операции',
                 profile: 'Профиль'

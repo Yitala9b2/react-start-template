@@ -22,6 +22,7 @@ const Header = () => {
                 <Logo />
                 <nav className="header__list df">
                     <NavLink to="/login" className={(props)=> props.isActive ? "header__li active" : "header__li"}  >{resource[language].components.header.login}</NavLink>
+                    <NavLink to="/registration" className={(props)=> props.isActive ? "header__li active" : "header__li"}  >{resource[language].components.header.registration}</NavLink>
                     <NavLink to="/operations" className={(props)=> props.isActive ? "header__li active" : "header__li"}  >{resource[language].components.header.operations}</NavLink>
                     <NavLink to="/profile" className={(props)=> props.isActive ? "header__li active" : "header__li"}  >{resource[language].components.header.profile}</NavLink>
                 </nav>

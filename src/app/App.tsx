@@ -3,10 +3,10 @@ import React, { useEffect, ReactNode, FC } from 'react';
 //import { IRootState } from 'src/store/store';
 import Layout from 'src/shared/ui/layout/Layout';
 import './styles/app.scss'
-import { ThemeProvider } from './context/ThemeContext';
+import { MyThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { Login } from 'src/pages';
-import Profile from 'src/pages/Profile';
+import Profile from 'src/pages/profile/Profile';
 import Operations from 'src/pages/Operations';
 import { Route, Routes } from 'react-router-dom';
 import { Modal } from 'src/shared/ui/modal/Modal';
@@ -21,7 +21,7 @@ function App() {
     //const user = useSelector((state: IRootState) => state.main.user)
 
     return (
-        <ThemeProvider>
+        <MyThemeProvider>
             <LanguageProvider>
                 <Routes>
                     <Route path="/" element={<Layout />} >
@@ -29,17 +29,18 @@ function App() {
                         <Route path="registration" element={<Registration />}></Route>
                         <Route path="profile"
                             element={
-                                <ProtectedRoute/>}>
+                                <ProtectedRoute />}>
                         </Route>
                         <Route path="operations" element={<Operations />}>
-                            <Route path="add" element={<Modal children={<AddOperationForm />} />} />
+                            <Route path="addOperation" element={<Modal label={'Добавить операцию'} children={<AddOperationForm />} />} />
+                            <Route path="operationId/:id" element={<Modal label={'Изменить операцию'} children={<AddOperationForm />} />} />
                         </Route>
                     </Route>
 
                 </Routes>
                 <MySnackBar />
             </LanguageProvider>
-        </ThemeProvider>
+        </MyThemeProvider>
     );
 }
 

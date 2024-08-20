@@ -53,7 +53,7 @@ export const SignInForm: FC = () => {
 
     return (
         <FormProvider {...methods}>
-            <Box className='form signInForm' component="form" onSubmit={handleSubmit(onSubmit)}>
+            <Box className='form signInForm themeBg' component="form" onSubmit={handleSubmit(onSubmit)}>
                 <>
                     <CustomTextField
                         className='wAll'

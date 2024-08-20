@@ -61,7 +61,7 @@ export const signIn = createAsyncThunk(
             const data = await response.json();
             localStorage.setItem("myToken", data.token)
             dispatch(setToken(data.token));
-            dispatch(setUser(body))
+            dispatch(setUser({...data.profile}))
             return fulfillWithValue(data)
 
         } catch (error) {
@@ -82,14 +82,6 @@ const initialState: mainTypes = {
     user: null,
 }
 
-const userObj = {
-    age: "30",
-    name: "Иван",
-    lastName: "Иванов",
-    phoneNumber: "+7(999)999-99-99",
-    gender: "Мужчина"
-}
-
 export const mainSlice = createSlice({
     name: 'main',
     initialState,
@@ -98,16 +90,13 @@ export const mainSlice = createSlice({
             state.token = action.payload
         },
         setUser: (state, action) => {
-            state.user = { ...action.payload, ...userObj }
+            state.user = action.payload
         },
         setInitial: (state, action) => {
             state.isInitial = action.payload
         },
     },
         extraReducers: (builder) => {
-        builder.addCase(fetchUser.rejected, (state, action) => {
-            console.log(action.payload)
-        })
         builder.addCase(fetchUser.fulfilled, (state, action) => {
             localStorage.setItem("myToken", action.payload.token)
           })

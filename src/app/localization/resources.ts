@@ -12,7 +12,12 @@ export const resource: I18nContextType['i18n'] = {
                 profile: 'Profile'
             },
             operation:{
-                addOperation: 'Add operation'
+                operationTitle: 'Operations',
+                categoryTitle: 'Categories',
+                productTitle: 'Products',
+                addOperation: 'Add operation',
+                addCategory: 'Add category',
+                addProduct: 'Add product',
             },
             testLanguage: {
                 text: 'Сhange language',
@@ -30,7 +35,12 @@ export const resource: I18nContextType['i18n'] = {
                 profile: 'Профиль'
             },
             operation:{
-                addOperation: 'Добавить операцию'
+                operationTitle: 'Операции',
+                categoryTitle: 'Категории',
+                productTitle: 'Продукты',
+                addOperation: 'Добавить операцию',
+                addCategory: 'Добавить категорию',
+                addProduct: 'Добавить продукт',
             },
             testLanguage: {
                 text: 'сменить язык',

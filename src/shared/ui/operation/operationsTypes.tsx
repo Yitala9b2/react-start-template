@@ -1,22 +1,32 @@
-export type CategoryType = {
+export interface CategoryType {
     id: string;
     name: string;
     photo?: string;
 };
 
+
+export interface Category extends CategoryType {
+    commandId? :string
+    createdAt?: Date
+    updatedAt?: Date
+}
+
 interface IOperation {
+    commandId: string;
+    createdAt: Date;
+    updatedAt: Date;
     id: string;
     name: string;
-    description?: string;
+    desc?: string;
     date: Date;
     amount: number | null;
-    category: CategoryType;
+    category: Category;
 }
 interface ICost extends IOperation {
-    type: 'Затраты';
+    type: 'Cost';
 }
 interface IProfit extends IOperation {
-    type: 'Прибыль';
+    type: 'Profit';
 }
 
 export type Operation = ICost | IProfit;

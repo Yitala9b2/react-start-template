@@ -54,7 +54,7 @@ export const SignUpForm: FC = () => {
     return (
         <FormProvider {...methods}>
             
-            <Box className='form signUpForm' component="form" onSubmit={handleSubmit(onSubmit)}>
+            <Box className='form signUpForm themeBg' component="form" onSubmit={handleSubmit(onSubmit)}>
                 <>
                 <CustomTextField
                      className='wAll'

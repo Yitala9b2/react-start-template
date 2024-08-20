@@ -4,22 +4,25 @@ import { ThemeContext } from '../../../app/context/ThemeContext';
 import { LanguageContext } from '../../../app/context/LanguageContext';
 import Logo from '../logo/Logo';
 import ToggleSwitch from '../switcher/ToggleSwitch';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import LanguageButton from '../languageButton/LanguageButton';
+import { useSelector } from 'react-redux';
+import { IRootState } from 'src/store/store'
 import './header.scss';
 
 
 const Header = () => {
     const { theme } = useContext(ThemeContext)
     const { language } = useContext(LanguageContext)
+    const name = useSelector(((state: IRootState) => state.main.user?.name))
 
 
 
     return (
         <header className={'header ' + theme}>
             <Box className="header__container">
-                <Logo />
+            <Typography sx={{ fontWeight: 700 }} variant="h5" >{name || ""}</Typography>
                 <nav className="header__list df">
                     <NavLink to="/login" className={(props)=> props.isActive ? "header__li active" : "header__li"}  >{resource[language].components.header.login}</NavLink>
                     <NavLink to="/registration" className={(props)=> props.isActive ? "header__li active" : "header__li"}  >{resource[language].components.header.registration}</NavLink>

@@ -1,10 +1,9 @@
 export interface UserTypes {
-        email: string,
-        password: string,
-        age: number,
-        name: string,
-        lastName: string,
-        phoneNumber: string,
-        gender: string
+    id: string;
+    email: string,
+    name: string,
+    signUpDate: Date;
+    commandId: string;
+    password:string;
 }
 

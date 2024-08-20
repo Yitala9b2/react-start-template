@@ -25,8 +25,7 @@ export const fetchUser = createAsyncThunk(
                     text: errors.errors[0].message,
                     severity: 'error'
                 }));
-                console.log(response)
-                return rejectWithValue(`${errors.errors[0].message}`)
+                throw new Error(`${errors.errors[0].message}`);
             }
             const data = await response.json();
             dispatch(setToken(data.token));
@@ -34,11 +33,39 @@ export const fetchUser = createAsyncThunk(
             return fulfillWithValue(data)
 
         } catch (error) {
-            console.log("erwg")
-            
-            throw rejectWithValue(error.message)
-            // Use `err.response.data` as `action.payload` for a `rejected` action,
-            // by explicitly returning it using the `rejectWithValue()` utility
+            return rejectWithValue(error)
+        }
+    }
+)
+
+export const signIn = createAsyncThunk(
+    'main/signIn',
+    async (body: IInput, { dispatch, rejectWithValue, fulfillWithValue }) => {
+        try {
+            const response = await fetch(`https://19429ba06ff2.vps.myjino.ru/api/signin`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(body)
+            })
+            if (!response.ok) {
+                const errors = await response.json();
+                dispatch(setSnackBar({
+                    open: true,
+                    text: errors.errors[0].message,
+                    severity: 'error'
+                }));
+                throw new Error(`${errors.errors[0].message}`);
+            }
+            const data = await response.json();
+            localStorage.setItem("myToken", data.token)
+            dispatch(setToken(data.token));
+            dispatch(setUser(body))
+            return fulfillWithValue(data)
+
+        } catch (error) {
+            return rejectWithValue(error)
         }
     }
 )

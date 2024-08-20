@@ -1,11 +1,11 @@
-.tooltip-container{
-        display: inline-flex;
+.tooltip-container {
+    display: inline-flex;
     margin: 2px;
     transition: opacity 0.3s ease 0s;
 }
 
 
-.tooltip-text{
+.tooltip-text {
     transition: opacity 0.3s ease 0s;
     position: absolute;
     background-color: #00000085;
@@ -14,12 +14,9 @@
     border-radius: 6px;
     opacity: 1;
 
-    &.hide{
-    transition: opacity 0.3s ease 0s;
-    opacity: 0;
+    &.hide {
+        transition: opacity 0.3s ease 0s;
+        opacity: 0;
     }
-        
+
 }
-
-
-    

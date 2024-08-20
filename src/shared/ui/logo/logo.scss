@@ -1,10 +1,11 @@
-.logo{
+.logo {
     position: relative;
     min-height: 50px;
     min-width: 50px;
     height: 100%;
     width: 60px;
-    &__img{
+
+    &__img {
         position: absolute;
         background-color: #282c34;
         border-radius: 50%;

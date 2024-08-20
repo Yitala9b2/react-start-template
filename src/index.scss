@@ -1,116 +1,132 @@
-@import'./constants.scss';
+@import './constants.scss';
+
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+        'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 * {
     padding: 0px;
     margin: 0px;
     border: 0px;
-  }
-  *,
-  *:before,
-  *:after {
+}
+
+*,
+*:before,
+*:after {
     box-sizing: border-box;
-  }
-  :focus,
-  :active {
+}
+
+:focus,
+:active {
     outline: none;
-  }
-  a:focus,
-  a:active {
+}
+
+a:focus,
+a:active {
     outline: none;
-  }
-  html,
-  body {
-    background-color: 
-    #f3f4f6;
-  }
-  body {
+}
+
+html,
+body {
+    background-color: #f3f4f6;
+}
+
+body {
     line-height: 1;
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  input,
-  button,
-  textarea {
+}
+
+input,
+button,
+textarea {
     font-size: inherit;
-  }
-  button {
+}
+
+button {
     cursor: pointer;
     color: inherit;
     background-color: inherit;
-  }
-  a {
+}
+
+a {
     color: inherit;
-  }
-  a:link,
-  a:visited {
+}
+
+a:link,
+a:visited {
     text-decoration: none;
-  }
-  a:hover {
+}
+
+a:hover {
     text-decoration: none;
-  }
-  ul li {
+}
+
+ul li {
     list-style: none;
-  }
-  img {
+}
+
+img {
     vertical-align: top;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: inherit;
     font-size: inherit;
-  }
+}
 
-  .df{
+.df {
     display: flex;
-  }
-  .dfc{
+}
+
+.dfc {
     display: flex;
     flex-direction: column;
-  }
-
-
-  .wAll{
-    width: 100%;
-  }
-  .error{
-    color: red
-  }
-  .App-body {
-    overflow: auto;
-    margin-top:  80px;
-    padding: 0px 4rem 0;
-//  min-height: calc(100vh) ;
-  height: calc(100vh - 80px) ;
-  &.light{
-    background-color: $main-bg-color;
-    color: black;
-  }
-  &.dark{
-    background-color: $mainDark-bg-color;
-    color: white;
-  }
 }
-.link{
+
+.wAll {
+    width: 100%;
+}
+
+.error {
+    color: red;
+}
+
+.App-body {
+    overflow: auto;
+    margin-top: 80px;
+    padding: 0px 4rem 0;
+    //  min-height: calc(100vh) ;
+    height: calc(100vh - 80px);
+
+    &.light {
+        background-color: $main-bg-color;
+        color: black;
+    }
+
+    &.dark {
+        background-color: $mainDark-bg-color;
+        color: white;
+    }
+}
+
+.link {
     display: block;
     height: 100%;
     width: 100%;

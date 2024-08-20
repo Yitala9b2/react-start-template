@@ -7,9 +7,9 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
-import { useDispatch } from 'react-redux';
-import { setToken, setUser } from 'src/slices/mainSlice';
-import {  useNavigate } from 'react-router-dom';
+import { useAppDispatch } from 'src/hooks/useAppDispatch';
+import { setToken, setUser, signIn } from 'src/slices/mainSlice';
+import { useNavigate } from 'react-router-dom';
 import './signIn.scss'
 import useHttp from 'src/hooks/http.hook';
 
@@ -29,7 +29,7 @@ export const SignInForm: FC = () => {
         commandId: "Vitala"
     })
     const { request } = useHttp()
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const methods = useForm<IInput>({
         defaultValues: data
     })
@@ -37,69 +37,50 @@ export const SignInForm: FC = () => {
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const { handleSubmit, formState: { errors }, control } = methods
 
-    const signIn = async (data: IInput) => {
-        const res = await request(`signin`, 'POST',JSON.stringify(data));
-        return res;
-    }
 
     const onSubmit: SubmitHandler<IInput> = (data) => {
-        signIn(data).then((value) => {
-            localStorage.setItem("myToken", value.token)
-            dispatch(setToken(value.token))
-            dispatch(setUser(data))
+        dispatch(signIn(data)).unwrap().then((value) => {
             navigate("/profile");
-        }).catch((e) => console.log(e));
-        
+        }).catch((value) => {
+            return value
+        })
+
     };
 
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
     };
-    //const clickHandler = () => {
-    //    fetch('http://19429ba06ff2.vps.myjino.ru/api/signup', {
-    //        method: 'POST',
-    //        headers: {
-    //            'Content-Type': 'application/json;charset=utf-8'
-    //        },
-    //        body: JSON.stringify({
-    //            email: "user@email.ty",
-    //            password: "123456",
-    //            commandId: "Vitala",
-    //        })
-    //    }).then((res) => {
-    //        console.log(res)
-    //    })
-    //}
+
     return (
         <FormProvider {...methods}>
             <Box className='form signInForm' component="form" onSubmit={handleSubmit(onSubmit)}>
                 <>
-                <CustomTextField
-                     className='wAll'
-                    requiredInput
-                    readOnly={false}
-                    name="email"
-                    control={control}
-                    label="Введите email"
-                    id="input-name"
-                    pattern={{
-                        value: pattern,
-                        message: "Invalid email address"
-                    }
-                    }
-                    startAdornment={
-                        <InputAdornment position="start">
-                            <PersonIcon />
-                        </InputAdornment>
-                    }
-                />
-                {errors?.email?.type === "pattern" && <div className='error'>Введен некорректный email</div>}
+                    <CustomTextField
+                        className='wAll'
+                        requiredInput
+                        readOnly={false}
+                        name="email"
+                        control={control}
+                        label="Введите email"
+                        id="input-name"
+                        pattern={{
+                            value: pattern,
+                            message: "Invalid email address"
+                        }
+                        }
+                        startAdornment={
+                            <InputAdornment position="start">
+                                <PersonIcon />
+                            </InputAdornment>
+                        }
+                    />
+                    {errors?.email?.type === "pattern" && <div className='error'>Введен некорректный email</div>}
                 </>
 
 
 
                 <CustomTextField
-                     className='wAll'
+                    className='wAll'
                     type={showPassword ? 'text' : 'password'}
                     requiredInput
                     readOnly={false}
@@ -125,10 +106,10 @@ export const SignInForm: FC = () => {
                         </InputAdornment>
                     }
                 />
-                
+
                 <Button variant="contained" type="submit"> Отправить</Button>
-                </Box>
-                {/*<button onClick={clickHandler}>drg</button>*/}
+            </Box>
+            {/*<button onClick={clickHandler}>drg</button>*/}
         </FormProvider>
     );
 };

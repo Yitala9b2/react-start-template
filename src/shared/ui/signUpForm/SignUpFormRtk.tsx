@@ -37,7 +37,9 @@ export const SignUpFormRtk: FC = () => {
 
 
     const onSubmit: SubmitHandler<IInput> = (data: IInput) => {
-        dispatch(fetchUser(data))
+        dispatch(fetchUser(data)).catch((value) => {
+            return value
+        })
     };
 
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
